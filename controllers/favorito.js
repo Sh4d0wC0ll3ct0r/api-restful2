@@ -19,11 +19,14 @@ function getFavorito(req,res){
    Favorito.findById(favoritoId,(err,favorito)=>{
          if(err){
             res.status(500).send({message: 'Error al devolver los marcador'});
-        }
-        if(!favorito){
-            res.status(404).send({message: 'No hay marcador'});
-        }
-        res.status(200).send({favorito});
+        } else {
+            if(!favorito){
+                  res.status(404).send({message: 'No hay marcador'});
+               }
+            else {
+                  res.status(200).send({favorito}); 
+                 }
+       }
    });
 }
 function getFavoritos(req,res){
